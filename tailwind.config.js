@@ -12,6 +12,7 @@ export default {
       balance: "#42597b",
       white: "#fff",
       chart: "#9ab0e9",
+      black: "rgb(97 100 98 / 58%)",
     },
   },
   plugins: [],

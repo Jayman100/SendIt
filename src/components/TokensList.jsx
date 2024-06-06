@@ -1,5 +1,8 @@
+import { useModal } from "../contexts/ModalContext";
+
 function TokensList({ token }) {
   const { name, amount, worth } = token;
+  const { handleOpenTransferModal } = useModal();
 
   return (
     <div className="bg-token flex justify-between py-4 px-8 rounded-xl">
@@ -9,7 +12,10 @@ function TokensList({ token }) {
         <p className="text-price">{`$${worth}`}</p>
       </div>
 
-      <button className="underline underline-offset-8 hover:text-chart">
+      <button
+        onClick={handleOpenTransferModal}
+        className="underline underline-offset-8 hover:text-chart"
+      >
         Transfer
       </button>
     </div>

@@ -1,6 +1,8 @@
-function Button({ children }) {
+function Button({ children, onclick }) {
   return (
-    <button className="bg-button py-4 px-10 rounded-lg ">{children}</button>
+    <button onClick={onclick} className="bg-button py-4 px-10 rounded-lg ">
+      {children}
+    </button>
   );
 }
 
