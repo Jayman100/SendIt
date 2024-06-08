@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { useAccount } from "wagmi";
 
 const modalContext = createContext(null);
 
@@ -7,7 +8,12 @@ function ModalProvider({ children }) {
   const [openAddModal, setOpenAddModal] = useState(false);
   const [openTransferModal, setOpenTransferModal] = useState(false);
 
+  const account = useAccount();
+
+  const address = account?.address;
+
   function handleOpenAddModal() {
+    if (address === undefined) return;
     setOpenModal(true);
     setOpenAddModal(true);
     setOpenTransferModal(false);
