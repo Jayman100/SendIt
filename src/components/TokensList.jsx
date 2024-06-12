@@ -1,7 +1,7 @@
 import { useModal } from "../contexts/ModalContext";
 
 function TokensList({ token }) {
-  const { name, amount, worth } = token;
+  const { name, balanceString: amount, price: worth, contractAddress } = token;
   const { handleOpenTransferModal } = useModal();
 
   return (
@@ -13,7 +13,7 @@ function TokensList({ token }) {
       </div>
 
       <button
-        onClick={handleOpenTransferModal}
+        onClick={() => handleOpenTransferModal(name, contractAddress)}
         className="underline underline-offset-8 hover:text-chart"
       >
         Transfer

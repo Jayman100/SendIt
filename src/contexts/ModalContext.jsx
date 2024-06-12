@@ -1,28 +1,38 @@
 import { createContext, useContext, useState } from "react";
 import { useAccount } from "wagmi";
 
-const modalContext = createContext(null);
+const modalContext = createContext("");
 
 function ModalProvider({ children }) {
   const [openModal, setOpenModal] = useState(false);
   const [openAddModal, setOpenAddModal] = useState(false);
   const [openTransferModal, setOpenTransferModal] = useState(false);
+  const [modalName, setModalName] = useState("");
+  const [currentContractAddress, setCurrentContractAddress] = useState("");
+
+  // const [token, setToken] = useState([]);
 
   const account = useAccount();
 
-  const address = account?.address;
-
   function handleOpenAddModal() {
-    if (address === undefined) return;
+    if (!account.isConnected) return;
     setOpenModal(true);
     setOpenAddModal(true);
     setOpenTransferModal(false);
   }
-  function handleOpenTransferModal() {
+  function handleOpenTransferModal(name, contractAddress) {
     setOpenModal(true);
     setOpenTransferModal(true);
     setOpenAddModal(false);
+    setModalName(name);
+    setCurrentContractAddress(contractAddress);
   }
+
+  // function addToken(contractAddress) {
+  //   TokenInfo(contractAddress, address);
+
+  //   setToken((token) => [...token, { balance, symbol }]);
+  // }
 
   return (
     <modalContext.Provider
@@ -33,6 +43,8 @@ function ModalProvider({ children }) {
         openModal,
         openTransferModal,
         setOpenModal,
+        modalName,
+        currentContractAddress,
       }}
     >
       {children}

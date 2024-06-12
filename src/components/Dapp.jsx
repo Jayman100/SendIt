@@ -10,16 +10,14 @@ function Dapp() {
   const { openModal } = useModal();
   const account = useAccount();
 
-  const address = account?.address;
-
   return (
     <div
-      className={`max-w-screen-lg mx-auto flex flex-col py-8 gap-10 relative`}
+      className={`max-w-screen-lg mx-auto flex flex-col py-8 gap-10 relative `}
     >
       <Header />
-      {address && <Charts />}
-      {address && <Tokens />}
-      {!address && <NoAddress />}
+      {account.isConnected && <Charts />}
+      {account.isConnected && <Tokens />}
+      {!account.isConnected && <NoAddress />}
       {openModal && <Modal />}
     </div>
   );
