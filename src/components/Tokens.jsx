@@ -1,4 +1,5 @@
-import { useToken } from "../contexts/TokenContext";
+import { useTokens } from "../contexts/TokenContext";
+import Spinnner from "./Spinnner";
 import TokenHeader from "./TokenHeader";
 import TokensList from "./TokensList";
 
@@ -10,11 +11,13 @@ import TokensList from "./TokensList";
 // ];
 
 function Tokens() {
-  const { token } = useToken();
+  const { token, isLoading } = useTokens();
 
-  return (
+  return isLoading ? (
+    <Spinnner />
+  ) : (
     <div className="flex flex-col gap-6">
-      <TokenHeader />
+      {/* <TokenHeader /> */}
       {token.map((token, i) => (
         <TokensList token={token} key={i} />
       ))}

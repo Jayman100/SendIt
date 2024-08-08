@@ -6,6 +6,8 @@ import { ModalProvider } from "./contexts/ModalContext.jsx";
 import Providers from "./components/Providers.jsx";
 import { TokenProvider } from "./contexts/TokenContext.jsx";
 
+import "./test/uniswapPrice.js";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Providers>

@@ -12,11 +12,15 @@
   "dependencies": {
     "@rainbow-me/rainbowkit": "^2.1.2",
     "@tanstack/react-query": "^5.40.1",
+    "@uniswap/sdk-core": "^5.3.1",
+    "@uniswap/v3-sdk": "^3.13.1",
+    "erc-20-abi": "^1.0.1",
     "ethers": "^6.13.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "viem": "^2.13.7",
-    "wagmi": "^2.9.9"
+    "wagmi": "^2.10.2",
+    "web3": "^4.10.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

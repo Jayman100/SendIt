@@ -10,8 +10,6 @@ function ModalProvider({ children }) {
   const [modalName, setModalName] = useState("");
   const [currentContractAddress, setCurrentContractAddress] = useState("");
 
-  // const [token, setToken] = useState([]);
-
   const account = useAccount();
 
   function handleOpenAddModal() {
@@ -27,12 +25,6 @@ function ModalProvider({ children }) {
     setModalName(name);
     setCurrentContractAddress(contractAddress);
   }
-
-  // function addToken(contractAddress) {
-  //   TokenInfo(contractAddress, address);
-
-  //   setToken((token) => [...token, { balance, symbol }]);
-  // }
 
   return (
     <modalContext.Provider

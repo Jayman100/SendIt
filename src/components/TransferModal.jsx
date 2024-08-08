@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { useModal } from "../contexts/ModalContext";
 import Button from "./Button";
-import { useToken } from "../contexts/TokenContext";
+import { useTokens } from "../contexts/TokenContext";
 
-function TransferModal() {
+function TransferModal({ modalName, currentContractAddress }) {
   const [recipientaAddress, setRecipientAddress] = useState("");
   const [amount, setAmount] = useState("");
-  const { modalName, currentContractAddress } = useModal();
-  const { TransferToken } = useToken();
+  const { TransferToken } = useTokens();
 
   function handleSend() {
     TransferToken(currentContractAddress, amount, recipientaAddress);

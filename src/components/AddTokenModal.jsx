@@ -1,18 +1,18 @@
 import { useState } from "react";
 import Button from "./Button";
 import { useModal } from "../contexts/ModalContext";
-import { useToken } from "../contexts/TokenContext";
+import { useTokens } from "../contexts/TokenContext";
 import { useAccount } from "wagmi";
 
-function AddTokenModal() {
+function AddTokenModal({ onClose }) {
   const [contractAddress, setContractAddress] = useState("");
   const [errorMessage, setErrorMessage] = useState(false);
 
   const account = useAccount();
   const address = account?.address;
 
-  const { TokenInfo, token } = useToken();
-  const { setOpenModal } = useModal();
+  const { tokenInfo } = useTokens();
+  // const { setOpenModal } = useModal();
 
   function handleAddToken() {
     if (!contractAddress) {
@@ -20,11 +20,12 @@ function AddTokenModal() {
 
       return;
     }
+    console.log(address);
 
-    TokenInfo(contractAddress, address);
-    setOpenModal(false);
+    tokenInfo(contractAddress, address);
+    onClose();
   }
-  console.log(token);
+
   return (
     <div className="flex flex-col gap-[40px]">
       <div className="flex flex-col gap-md">
